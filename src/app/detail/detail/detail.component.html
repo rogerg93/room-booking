@@ -1,3 +1,30 @@
-<p>
-  detail works!
-</p>
+<div class="row h-100 w-100 bg-success">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened class="bg-success">
+      <div class="row p-3">
+        <div class="col font-size-extra-large text-white text-center">
+          {{ today | date: "HH:mm" }}
+        </div>
+        <div class="col font-size-large text-white text-center">
+          {{ today | date: "E, LLL d" }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center pb-3">
+          <button mat-flat-button>Book</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-list role="list">
+          <mat-list-item *ngFor="let b of roomBookings.bookings; let i = index;" role="listitem" [ngClass]="i % 2 === 0 ? 'list-item-dark' : 'list-item-light'" class="text-white">
+            <div class="row">Today at {{ b.start | date: "HH:mm" }} - {{ b.end | date: "HH:mm" }}</div>
+            <div class="row">{{ b.employee }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="bg-success">Main content</mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

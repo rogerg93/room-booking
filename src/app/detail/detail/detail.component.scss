@@ -1,0 +1,19 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav {
+  width: 300px;
+}
+
+.list-item-dark {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.list-item-light {
+    background-color: rgba(255,255,255,0.1);
+}

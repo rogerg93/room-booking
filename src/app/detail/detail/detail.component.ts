@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  public today = new Date();
+  public roomBookings = [];
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
+    this.getRoomBookings(0);
+  }
+
+  private getRoomBookings(id: number): void {
+    this.http.get('./assets/mock-data/rooms.json').subscribe((rooms: any) => {
+      this.roomBookings = rooms.filter(room => room.id === id)[0];
+    });
   }
 
 }
