@@ -1,0 +1,58 @@
+[
+    {
+        "id": 0,
+        "room": "War Room",
+        "occupied": true,
+        "bookings": [
+            {
+                "start": "1559835000000",
+                "end": "1559838600000",
+                "employee": "John Doe"
+            },
+            {
+                "start": "1559840400000",
+                "end": "1559847600000",
+                "employee": "John Doe"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "room": "Banana",
+        "occupied": false
+    },
+    {
+        "id": 2,
+        "room": "Greenhouse",
+        "occupied": true,
+        "bookings": [
+            {
+                "start": "1559835000000",
+                "end": "1559838600000",
+                "employee": "John Doe"
+            },
+            {
+                "start": "1559840400000",
+                "end": "1559847600000",
+                "employee": "John Doe"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "room": "Aquarium",
+        "occupied": true,
+        "bookings": [
+            {
+                "start": "1559835000000",
+                "end": "1559838600000",
+                "employee": "John Doe"
+            },
+            {
+                "start": "1559840400000",
+                "end": "1559847600000",
+                "employee": "John Doe"
+            }
+        ]
+    }
+]

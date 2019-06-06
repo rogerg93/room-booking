@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public today = new Date();
+  public rooms: Observable<any>;
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
+    this.rooms = this.getRoomsData();
+  }
+
+  private getRoomsData(): Observable<any> {
+    return this.http.get('./assets/mock-data/rooms.json');
   }
 
 }

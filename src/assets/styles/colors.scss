@@ -1,0 +1,23 @@
+$white: #ffffff;
+$gray: #363636;
+$light-gray: #cccbca;
+
+// text
+
+.text-white {
+  color: $white;
+}
+
+.text-gray {
+  color: $gray;
+}
+
+.text-light-gray {
+  color: $light-gray;
+}
+
+// background
+
+.background-light-gray {
+    background-color: $light-gray;
+}
