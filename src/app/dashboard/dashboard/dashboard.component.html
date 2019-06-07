@@ -4,7 +4,7 @@
         <div class="font-size-large text-white text-center">{{ today | date: "E, LLL d" }}</div>
     </div>
     <div *ngFor="let r of rooms | async" class="col-md-6 col-lg-3 p-2">
-        <div class="card h-100 border-0">
+        <div class="card h-100 border-0" (click)="goToDetail(r)">
             <div class="card-header p-3 border-0"
                 [ngClass]="r.occupied ? 'text-white bg-danger' : 'text-black bg-white'">
                 <div class="text-uppercase font-weight-bold">{{ r.room }}</div>

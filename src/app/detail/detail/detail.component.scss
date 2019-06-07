@@ -1,19 +1,54 @@
-.example-container {
+// .example-container {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+// }
+
+// mat-sidenav {
+//   width: 300px;
+// }
+
+// .list-item-dark {
+//     background-color: rgba(0,0,0,0.1);
+// }
+
+// .list-item-light {
+//     background-color: rgba(255,255,255,0.1);
+// }
+
+.row {
+  margin: 0;
+}
+
+.col-lg-3, .col {
+  padding: 0;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.darken-20 {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.darken-40 {
+  background-color: rgba(0,0,0,0.4);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.header {
+  height: 222px;
+}
+
+.bottom-left {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 1rem;
+  left: 1rem;
 }
 
-mat-sidenav {
-  width: 300px;
-}
-
-.list-item-dark {
-    background-color: rgba(0,0,0,0.1);
-}
-
-.list-item-light {
-    background-color: rgba(255,255,255,0.1);
-}

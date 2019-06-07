@@ -1,4 +1,4 @@
-<div class="row h-100 w-100 bg-success">
+<!-- <div class="row h-100 w-100 bg-success">
   <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened class="bg-success">
       <div class="row p-3">
@@ -27,4 +27,48 @@
     </mat-sidenav>
     <mat-sidenav-content class="bg-success">Main content</mat-sidenav-content>
   </mat-sidenav-container>
-</div>
+</div> -->
+
+<div class="row h-100 bg-success">
+  <div class="col-3 p-0 darken-20">
+    <div class="row p-3 d-flex flex-column">
+      <div class="font-size-extra-large text-white text-center font-weight-bold">{{ today | date: "HH:mm" }}</div>
+      <div class="font-size-large text-white text-center">{{ today | date: "E, LLL d" }}</div>
+    </div>
+    <div class="row pb-3 d-flex justify-content-center">
+      <button type="button" class="btn btn-secondary btn-lg darken-20 border-0">Book</button>
+    </div>
+    <div class="row">
+      <ul class="list-group list-group-flush w-100">
+        <li *ngFor="let b of roomBookings; let i = index;" class="list-group-item p-3 text-white"
+          [ngClass]="i % 2 === 0 ? 'darken-20' : 'transparent'" (click)="selectBooking(i)">
+          <div class="row">Today at {{ b.start | date: "HH:mm" }} - {{ b.end | date: "HH:mm" }}</div>
+          <div class="row font-weight-bold">{{ b.employee }}</div>
+        </li>
+      </ul>
+    </div>
+    <div class="row bottom-left">
+      <i class="material-icons text-white" (click)="goToDashboard();">
+        arrow_back
+      </i>
+    </div>
+  </div>
+  <div class="col-9 p-0 p-3 d-flex flex-column">
+    <div class="row">
+      <div class="col header font-size-extra-large text-white font-weight-bold">
+        {{ room.room }}
+      </div>
+    </div>
+    <div class="row darken-20 flex-grow-1 text-white">
+      <div class="col-12 p-3">
+        Starts in 32 minutes
+      </div>
+      <div class="col-12 p-3">
+        Today at {{ room.bookings[selectedBooking].start | date: "HH:mm" }} -
+        {{ room.bookings[selectedBooking].end | date: "HH:mm" }}
+      </div>
+      <div class="col-12 p-3">
+        {{ room.bookings[selectedBooking].employee }}
+      </div>
+    </div>
+  </div>

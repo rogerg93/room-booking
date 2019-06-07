@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,8 @@ export class DashboardComponent implements OnInit {
   public rooms: Observable<any>;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -22,6 +24,12 @@ export class DashboardComponent implements OnInit {
 
   private getRoomsData(): Observable<any> {
     return this.http.get('./assets/mock-data/rooms.json');
+  }
+
+  public goToDetail(room: any) {
+    this.router.navigate([
+      '/detail/' + room.id
+    ]);
   }
 
 }
