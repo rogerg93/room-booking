@@ -1,53 +1,43 @@
-<div class="grid-wrapper">
-    <mat-grid-list cols="3" rowHeight="1:1" gutterSize="1rem">
-
-        <mat-grid-tile>
-            <div class="row">
-                <div class="col font-size-extra-large text-white text-center">
-                    {{ today | date: "HH:mm" }}
-                </div>
-                <div class="col font-size-large text-white text-center">
-                    {{ today | date: "E, LLL d" }}
-                </div>
+<div class="row" style="margin: 0.5rem;">
+    <div class="col-md-6 col-lg-3 p-0 d-flex flex-column align-items-center justify-content-center">
+        <div class="font-size-extra-large text-white text-center font-weight-bold">{{ today | date: "HH:mm" }}</div>
+        <div class="font-size-large text-white text-center">{{ today | date: "E, LLL d" }}</div>
+    </div>
+    <div *ngFor="let r of rooms | async" class="col-md-6 col-lg-3 p-2">
+        <div class="card h-100 border-0">
+            <div class="card-header p-3 border-0"
+                [ngClass]="r.occupied ? 'text-white bg-danger' : 'text-black bg-white'">
+                <div class="text-uppercase font-weight-bold">{{ r.room }}</div>
             </div>
-        </mat-grid-tile>
-
-        <mat-grid-tile *ngFor="let r of rooms | async">
-            <mat-card class="d-flex flex-column card" [class.bg-danger]="r.occupied">
-                <mat-card-title [ngClass]="r.occupied ? 'text-white' : 'text-black'">
-                    <div class="text-uppercase font-weight-bold">{{ r.room }}</div>
-                </mat-card-title>
-                <mat-card-content class="d-flex flex-column align-items-left justify-content-center flex-grow-1" [ngClass]="r.occupied ? 'text-white' : 'text-black'">
-                    <!-- Occupied -->
-                    <ng-container *ngIf="r.occupied">
-                        <div class="row">
-                            <div class="col">
-                                <div class="font-size-large">Occupied</div>
-                                <div>{{ r.bookings[0].start | date: "HH:mm" }} - {{ r.bookings[0].end | date: "HH:mm" }}</div>
+            <div class="card-body" [class.bg-danger]="r.occupied" [ngClass]="r.occupied ? 'text-white' : 'text-black'">
+                <ng-container *ngIf="r.occupied">
+                    <div class="row">
+                        <div class="col">
+                            <div class="font-size-large">Occupied</div>
+                            <div>{{ r.bookings[0].start | date: "HH:mm" }} - {{ r.bookings[0].end | date: "HH:mm" }}
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col">
-                                <div class="font-weight-bold">{{ r.bookings[0].employee }}</div>
-                            </div>
-                        </div>
-                    </ng-container>
-                    <!-- Available -->
-                    <ng-container *ngIf="!r.occupied">
-                        <div class="row">
-                            <div class="col">
-                                <div class="font-size-large">Available</div>
-                            </div>
-                        </div>
-                    </ng-container>
-                </mat-card-content>
-                <mat-card-footer *ngIf="r.bookings && r.bookings[1]" class="background-light-gray rounded-bottom">
-                    <div class="font-size-small">
-                        {{ r.bookings[1].start | date: "HH:mm" }} - {{ r.bookings[1].end | date: "HH:mm" }}
                     </div>
-                    <div class="font-size-small font-weight-bold">{{ r.bookings[1].employee }}</div>
-                </mat-card-footer>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="font-weight-bold">{{ r.bookings[0].employee }}</div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="!r.occupied">
+                    <div class="row">
+                        <div class="col">
+                            <div class="font-size-large">Available</div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div *ngIf="r.bookings && r.bookings[1]" class="card-footer p-3 background-light-gray">
+                <div class="font-size-small">
+                    {{ r.bookings[1].start | date: "HH:mm" }} - {{ r.bookings[1].end | date: "HH:mm" }}
+                </div>
+                <div class="font-size-small font-weight-bold">{{ r.bookings[1].employee }}</div>
+            </div>
+        </div>
+    </div>
 </div>
